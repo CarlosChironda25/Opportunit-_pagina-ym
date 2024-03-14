@@ -1,0 +1,7 @@
+/public/
+/vendor/
+*.zip
+writable/
+system/
+.env
+theme/
