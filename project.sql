@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2024 at 04:29 PM
+-- Generation Time: Mar 16, 2024 at 07:18 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -63,6 +63,7 @@ CREATE TABLE `jobs` (
   `is_published` int(11) DEFAULT 0,
   `publication` varchar(255) NOT NULL,
   `location_id` int(11) DEFAULT 0,
+  `category_id` int(11) NOT NULL DEFAULT 0,
   `is_deleted` int(1) DEFAULT 0,
   `is_active` int(1) DEFAULT 0,
   `is_featured` int(11) NOT NULL DEFAULT 0,
@@ -71,6 +72,14 @@ CREATE TABLE `jobs` (
   `updated_at` varchar(255) NOT NULL,
   `updated_by` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `jobs`
+--
+
+INSERT INTO `jobs` (`id`, `title`, `job_description`, `requirement`, `company_profile`, `is_published`, `publication`, `location_id`, `category_id`, `is_deleted`, `is_active`, `is_featured`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
+(1, 'Junior Insurance Consultant - Milan Office', 'Generali Italia, leader in the Italian insurance market, is looking for new brilliant and dynamic resources who, through a path of growth, will be able to become INSURANCE PROFESSIONALS. The resources will be placed within the Management Branches, commercial structures that operate in the main metropolitan cities of Italy.\n We are looking for Junior Insurance Consultants for our Milan branch', 'What features are we looking for:\n Degree and/or diploma', 'Being a Lifetime Partner is our ambition: every day we want to be at the side of our customers by taking care of their lives and their dreams. This is more than a job for us.', 1, 'Generali Italia', 1, 1, 1, 1, 0, '2024-03-16 22:01:12', '', '2024-03-16 23:46:22', ''),
+(2, 'Junior Insurance Consultant - Milan Office', 'Generali Italia, leader in the Italian insurance market, is looking for new brilliant and dynamic resources who, through a path of growth, will be able to become INSURANCE PROFESSIONALS. The resources will be placed within the Management Branches, commercial structures that operate in the main metropolitan cities of Italy.\n We are looking for Junior Insurance Consultants for our Milan branch', 'What features are we looking for:\n Degree and/or diploma', 'Being a Lifetime Partner is our ambition: every day we want to be at the side of our customers by taking care of their lives and their dreams. This is more than a job for us.', 1, 'Generali Italia SpA', 12, 0, 0, 1, 1, '2024-03-16 22:18:57', '', '2024-03-16 22:40:55', '');
 
 -- --------------------------------------------------------
 
@@ -168,7 +177,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `location`
