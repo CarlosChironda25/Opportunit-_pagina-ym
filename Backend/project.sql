@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2024 at 07:18 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 7.4.33
+-- Generation Time: Mar 21, 2024 at 04:20 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,10 +43,30 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`, `is_deleted`, `is_active`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
-(1, 'Audit Positions', 0, 1, '2024-03-16 20:22:57', '', '2024-03-16 20:30:45', ''),
+(1, 'Audit Positions', 1, 1, '2024-03-16 20:22:57', '', '2024-03-18 20:23:16', ''),
 (2, 'Audit Positions2332', 1, 1, '2024-03-16 20:22:57', '', '2024-03-16 20:28:39', ''),
 (3, 'Audit Positions2332', 0, 0, '2024-03-16 20:22:57', '', '2024-03-16 20:28:39', ''),
-(4, 'Ancona', 0, 1, '2024-03-16 20:39:01', '', '', '');
+(4, 'Ancona', 1, 1, '2024-03-16 20:39:01', '', '2024-03-20 14:13:51', ''),
+(5, 'Positions in Claims1', 1, 1, '2024-03-18 20:23:16', '', '2024-03-20 20:31:38', ''),
+(6, 'India', 1, 1, '2024-03-20 20:31:38', '', '2024-03-20 20:31:38', ''),
+(7, 'India2', 1, 1, '2024-03-20 20:31:38', '', '2024-03-20 20:31:38', ''),
+(8, 'Test', 1, 1, '2024-03-20 20:31:38', '', '2024-03-20 20:31:38', ''),
+(9, 'India24', 1, 1, '2024-03-20 20:31:38', '', '2024-03-20 20:52:33', ''),
+(10, 'india', 1, 1, '2024-03-20 20:52:33', '', '2024-03-20 20:52:33', ''),
+(11, 'india india', 1, 1, '2024-03-20 20:52:33', '', '2024-03-20 20:52:33', ''),
+(12, 'injsdu', 1, 1, '2024-03-20 20:52:33', '', '2024-03-20 20:52:33', ''),
+(13, 'india', 1, 1, '2024-03-20 20:52:33', '', '2024-03-20 20:52:33', ''),
+(14, 'jh', 1, 1, '2024-03-20 20:52:33', '', '2024-03-20 20:52:33', ''),
+(15, 'khiu', 1, 1, '2024-03-20 20:52:33', '', '2024-03-20 20:52:33', ''),
+(16, 'sjhsi', 1, 1, '2024-03-20 20:52:33', '', '2024-03-20 20:52:33', ''),
+(17, 'shdhsdd', 1, 1, '2024-03-20 20:52:33', '', '2024-03-20 20:52:33', ''),
+(18, 'phiguy', 1, 1, '2024-03-20 20:52:33', '', '2024-03-20 20:52:33', ''),
+(19, 'lhg', 1, 1, '2024-03-20 20:52:33', '', '2024-03-20 20:52:33', ''),
+(20, 'santjohihi', 1, 1, '2024-03-20 20:52:33', '', '2024-03-20 20:52:33', ''),
+(21, 'India', 0, 1, '2024-03-20 20:52:33', '', '2024-03-21 00:14:52', ''),
+(22, 'santu', 0, 1, '2024-03-20 20:52:33', '', '2024-03-21 00:14:52', ''),
+(23, 'kolkata', 0, 1, '2024-03-20 20:52:33', '', '2024-03-21 00:14:52', ''),
+(24, 'aaaac', 1, 1, '2024-03-20 20:52:33', '', '2024-03-21 00:14:52', '');
 
 -- --------------------------------------------------------
 
@@ -78,8 +98,9 @@ CREATE TABLE `jobs` (
 --
 
 INSERT INTO `jobs` (`id`, `title`, `job_description`, `requirement`, `company_profile`, `is_published`, `publication`, `location_id`, `category_id`, `is_deleted`, `is_active`, `is_featured`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
-(1, 'Junior Insurance Consultant - Milan Office', 'Generali Italia, leader in the Italian insurance market, is looking for new brilliant and dynamic resources who, through a path of growth, will be able to become INSURANCE PROFESSIONALS. The resources will be placed within the Management Branches, commercial structures that operate in the main metropolitan cities of Italy.\n We are looking for Junior Insurance Consultants for our Milan branch', 'What features are we looking for:\n Degree and/or diploma', 'Being a Lifetime Partner is our ambition: every day we want to be at the side of our customers by taking care of their lives and their dreams. This is more than a job for us.', 1, 'Generali Italia', 1, 1, 1, 1, 0, '2024-03-16 22:01:12', '', '2024-03-16 23:46:22', ''),
-(2, 'Junior Insurance Consultant - Milan Office', 'Generali Italia, leader in the Italian insurance market, is looking for new brilliant and dynamic resources who, through a path of growth, will be able to become INSURANCE PROFESSIONALS. The resources will be placed within the Management Branches, commercial structures that operate in the main metropolitan cities of Italy.\n We are looking for Junior Insurance Consultants for our Milan branch', 'What features are we looking for:\n Degree and/or diploma', 'Being a Lifetime Partner is our ambition: every day we want to be at the side of our customers by taking care of their lives and their dreams. This is more than a job for us.', 1, 'Generali Italia SpA', 12, 0, 0, 1, 1, '2024-03-16 22:18:57', '', '2024-03-16 22:40:55', '');
+(1, 'Junior Insurance Consultant - Milan Office', 'Generali Italia, leader in the Italian insurance market, is looking for new brilliant and dynamic resources who, through a path of growth, will be able to become INSURANCE PROFESSIONALS. The resources will be placed within the Management Branches, commercial structures that operate in the main metropolitan cities of Italy.\n We are looking for Junior Insurance Consultants for our Milan branch', 'What features are we looking for:\n Degree and/or diploma', 'Being a Lifetime Partner is our ambition: every day we want to be at the side of our customers by taking care of their lives and their dreams. This is more than a job for us.', 1, 'Generali Italia', 2, 1, 0, 0, 0, '2024-03-16 22:01:12', '', '2024-03-18 20:23:16', ''),
+(2, 'Junior Insurance Consultant - Milan Office', 'Generali Italia, leader in the Italian insurance market, is looking for new brilliant and dynamic resources who, through a path of growth, will be able to become INSURANCE PROFESSIONALS. The resources will be placed within the Management Branches, commercial structures that operate in the main metropolitan cities of Italy.\n We are looking for Junior Insurance Consultants for our Milan branch', 'What features are we looking for:\n Degree and/or diploma', 'Being a Lifetime Partner is our ambition: every day we want to be at the side of our customers by taking care of their lives and their dreams. This is more than a job for us.', 1, 'Generali Italia SpA', 1, 2, 0, 1, 1, '2024-03-16 22:18:57', '', '2024-03-18 20:23:16', ''),
+(3, 'Junior Insurance Consultant - Milan Office', 'Generali Italia, leader in the Italian insurance market, is looking for new brilliant and dynamic resources who, through a path of growth, will be able to become INSURANCE PROFESSIONALS. The resources will be placed within the Management Branches, commercial structures that operate in the main metropolitan cities of Italy.\n We are looking for Junior Insurance Consultants for our Milan branch', 'What features are we looking for:\n Degree and/or diploma', 'Being a Lifetime Partner is our ambition: every day we want to be at the side of our customers by taking care of their lives and their dreams. This is more than a job for us.', 1, 'Generali Italia SpA', 1, 1, 0, 1, 0, '2024-03-18 20:23:16', '', '2024-03-21 01:39:17', '');
 
 -- --------------------------------------------------------
 
@@ -103,7 +124,13 @@ CREATE TABLE `location` (
 --
 
 INSERT INTO `location` (`id`, `name`, `is_deleted`, `is_active`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
-(1, 'Ancona', 0, 1, '2024-03-16 20:45:09', '', '2024-03-16 20:48:35', '');
+(1, 'Ancona', 1, 1, '2024-03-16 20:45:09', '', '2024-03-18 20:23:16', ''),
+(2, 'India Location', 0, 1, '2024-03-21 00:14:52', '', '2024-03-21 00:55:39', ''),
+(3, 'Kolkata', 1, 1, '2024-03-21 00:14:52', '', '2024-03-21 00:14:52', ''),
+(4, 'Santu Location', 0, 1, '2024-03-21 00:55:39', '', '', ''),
+(5, 'Bangladesh', 0, 1, '2024-03-21 20:17:07', '', '', ''),
+(6, 'USA', 0, 1, '2024-03-21 20:17:07', '', '', ''),
+(7, 'UAE', 0, 1, '2024-03-21 20:17:07', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -132,8 +159,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `contact`, `type`, `profile_img`, `is_deleted`, `is_active`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
-(1, 'Admin', 'admin@abcd.com', '$2y$10$u/Iui6ar9q6Ox4MRkgT.1.cbgCM0AE9zdCAHSGD2SxSJdmp6kf/82', '9999999999', 1, 'admin_profile.jpg', 0, 0, '2023-12-14 18:27:03', 0, '2023-12-14 18:27:03', 0),
-(2, 'Carlos', 'carlos@abcd.com', '$2y$10$u/Iui6ar9q6Ox4MRkgT.1.cbgCM0AE9zdCAHSGD2SxSJdmp6kf/82', '9999999999', 1, 'admin_profile.jpg', 0, 0, '2023-12-14 18:27:03', 0, '2023-12-14 18:27:03', 0);
+(1, 'Carlos', 'carlos@abcd.com', '202cb962ac59075b964b07152d234b70', '9999999999', 1, 'admin_profile.jpg', 0, 0, '2023-12-14 18:27:03', 0, '2023-12-14 18:27:03', 0),
+(2, 'Admin', 'admin@abcd.com', '$2y$10$u/Iui6ar9q6Ox4MRkgT.1.cbgCM0AE9zdCAHSGD2SxSJdmp6kf/82', '9999999999', 1, 'admin_profile.jpg', 0, 0, '2023-12-14 18:27:03', 0, '2023-12-14 18:27:03', 0),
+(3, 'Carlos', 'carlos@abcd.com', '$2y$10$u/Iui6ar9q6Ox4MRkgT.1.cbgCM0AE9zdCAHSGD2SxSJdmp6kf/82', '9999999999', 1, 'admin_profile.jpg', 0, 0, '2023-12-14 18:27:03', 0, '2023-12-14 18:27:03', 0);
 
 --
 -- Indexes for dumped tables
@@ -171,19 +199,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `location`
 --
 ALTER TABLE `location`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
