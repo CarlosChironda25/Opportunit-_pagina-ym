@@ -1,0 +1,64 @@
+const db = require('../db');
+const crypto = require('crypto');
+
+exports.index = (req, res) => {
+    res.json({ status: "success", msg: "connected" })
+};
+
+exports.createUser = (req, res) => {
+    // Implementation to create a new user in the database
+};
+
+exports.get_user = (req, res) => {
+    const sql = 'SELECT id, name, email, contact FROM users';
+    db.query(sql, (error, results) => {
+        if (error) {
+            console.error('Error executing MySQL query: ' + error.stack);
+            res.status(500).json({ error: 'Internal server error' });
+            return;
+        }
+
+        // Send the results as JSON
+        output = { status: "success", data: results }
+        res.json(output);
+
+    });
+};
+
+exports.user_info = (req, res) => {
+    const body = req.params;
+
+    const sql = 'SELECT id, name, email, contact FROM users where id = ' + body.id;
+
+    db.query(sql, (error, results) => {
+        if (error) {
+            console.error('Error executing MySQL query: ' + error.stack);
+            res.status(500).json({ error: 'Internal server error' });
+            return;
+        }
+
+        // Send the results as JSON
+        output = { status: "success", data: results }
+        res.json(output);
+
+    });
+};
+
+exports.admin_login = (req, res) => {
+    const body = req.body;
+    if (body.username == "santu" && body.password == "123") {
+        output = { status: "success", msg: "successfully logged in", token: this.generateRandomToken() }
+    } else {
+        output = { status: "failed", msg: "Invalid Credientials!!!" }
+    }
+
+    res.json(output);
+};
+
+
+exports.generateRandomToken = () => {
+    let length = 40;
+    return crypto.randomBytes(Math.ceil(length / 2)).toString('hex').slice(0, length);
+
+};
+
