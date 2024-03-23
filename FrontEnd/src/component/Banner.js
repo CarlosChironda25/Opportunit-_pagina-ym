@@ -40,7 +40,6 @@ function Banner() {
       });
       setData2(option2Data);
     }
-
   };
   // const newData = data.map((ele) => ({ label: ele.name, value: ele.name }));
   useEffect(() => {
@@ -64,16 +63,23 @@ function Banner() {
             </div>
           </div>
         </div>
-
+        <div className="row">
+          <div className="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group has-search mb-4">
+              <span class="fa fa-search form-control-feedback"></span>
+              <input type="text" class="form-control" placeholder="Search" />
+            </div>
+          </div>
+        </div>
         <div className="row">
           <div className="col-lg-3 col-md-3 col-xl-3 col-xxl-3">
             <div className="select">
-              <Select options={data} />
+              <Select isMulti options={data} />
             </div>
           </div>
           <div className="col-lg-3 col-md-3 col-xl-3 col-xxl-3">
             <div className="select">
-              <Select options={data2} />
+              <Select isMulti options={data2} />
             </div>
           </div>
         </div>

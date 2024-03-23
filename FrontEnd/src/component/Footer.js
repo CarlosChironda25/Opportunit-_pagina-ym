@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../img/footer-logo.png";
+import logo from "../img/logo.png";
 import { Link } from "react-router-dom";
 
 function Footer() {
@@ -31,16 +31,16 @@ function Footer() {
                     <i class="fa fa-linkedin-square fb"></i>
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a href="#" target="_blank">
                     <i class="fa fa-twitter fb"></i>
                   </a>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <a href="#" target="_blank">
                     <i class="fa fa-youtube-play fb"></i>
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
@@ -72,17 +72,18 @@ function Footer() {
                 </li>
                 <li>
                   <Link to="/contact" className="manu poppins font15">
-                    CATEGORIE
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/contact" className="manu poppins font15">
                     INSIGHT
                   </Link>
                 </li>
                 <li>
                   <Link to="/contact" className="manu poppins font15">
                     PREMI
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/contact" className="manu poppins font15">
+                    CATEGORIE
                   </Link>
                 </li>
               </ul>
@@ -94,9 +95,22 @@ function Footer() {
         <div className="container">
           <div className="row">
             <p className="font14 poppins mb-0">
-              © Generali Italia S.p.A. - C.F. 00409920584 - P.IVA 01333550323
+              <div>
+                <Link to="/contact" className="manu poppins font15 text-reset color__reset">
+                  Privacy
+                </Link>
+                &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;
+                <Link to="/contact" className="manu poppins font15 text-reset color__reset">
+                  Termini e Condizioni
+                </Link>
+                &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;
+                <Link to="/contact" className="manu poppins font15 text-reset color__reset">
+                  Privacy e sicurezza del sito
+                </Link>
+              </div>
+              &copy; Mygrants - C.F. 00409920584 - P.IVA 01333550323
               <a href="#" className="text-white text-decoration-none ">
-                - gogenerali@generali.com
+                - info@mygrants.it
               </a>
             </p>
           </div>

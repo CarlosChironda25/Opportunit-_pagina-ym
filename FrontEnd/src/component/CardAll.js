@@ -1,17 +1,11 @@
 import React from "react";
-import logo from "../img/logo-generali-cut.png";
-import { Link } from "react-router-dom";
+import logo from "../img/logo_icon.png";
+import { Link } from 'react-router-dom';
 
-function CardAll({ title, address, label }) {
-  // const card = [
-  //   {
-  //     title: "Business Data Analyst Intern",
-  //     address: "Milano, Roma, Trieste, Mogliano Veneto",
-  //     label: "Digital & Analytics",
-  //   },
-  // ];
+function CardAll({ title, address, label, id}) {
+
   return (
-    <Link to="/job" className="decoration">
+    <Link to={`/job?id=${id}`} className="decoration" >
       <div className="card">
         <h2 className="font18 poppins"> {title}</h2>
         <div className="d-flex align-items-center">
@@ -20,7 +14,7 @@ function CardAll({ title, address, label }) {
         </div>
         <div className="flex poppins bottom-sec justify-content-between ">
           <label className="font14">{label}</label>
-          <img src={logo} className="img-logo" />
+          <img src={logo} style={{ height: '40px', width: '250px' }} className="img-logo logo_icon" />
         </div>
       </div>
     </Link>

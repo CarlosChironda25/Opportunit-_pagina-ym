@@ -115,6 +115,15 @@ const router = createRouter({
       component: () => import('../views/add_job.vue')
     },
     {
+      path: '/jobs/edit/:id',
+      name: 'Edit_Jobs',
+      meta: {
+        title: 'Edit Jobs',
+        requiresAuth: true
+      },
+      component: () => import('../views/edit_job.vue')
+    },
+    {
       path: '/blank',
       name: 'blank',
       meta: {
@@ -135,10 +144,10 @@ router.beforeEach((to, from, next) => {
   // console.log(isAuthRequired, 'meta');
 
   if ((isAuthenticated === false && isAuthRequired)) {
-    console.log('Redirecting to login');
+    // console.log('Redirecting to login');
     next('/login');
   } else {
-    console.log('Continuing to requested route');
+    // console.log('Continuing to requested route');
     next();
   }
 });

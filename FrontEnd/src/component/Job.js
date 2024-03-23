@@ -1,13 +1,16 @@
 import CardAll from "./CardAll";
 import BussinessCard from "./BussinessCard";
-import logo from "../img/logo-generali-cut.png";
-import { Link } from "react-router-dom";
+import logo from "../img/logo_icon.png";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 function Job() {
   const [data, setData] = useState([]);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const jobId = searchParams.get("id");
 
-  const show = async (jobId) => {
+  const show = async () => {
     try {
       const result = await axios.get(
         `http://localhost:5000/api/jobs/get/${jobId}`,
@@ -26,8 +29,8 @@ function Job() {
   };
 
   useEffect(() => {
-    show(2);
-  }, []);
+    show(jobId);
+  }, [jobId]);
   return (
     <>
       <div className="job-banner">
@@ -47,7 +50,8 @@ function Job() {
                     {data.title}
                   </div>
                   <p>
-                    Finamcial audit
+
+                    {data.publication}
                     <img
                       src={logo}
                       style={{ width: "30px", marginLeft: "20px" }}
@@ -148,7 +152,7 @@ function Job() {
           </div>
         </div>
         <hr></hr>
-        <BussinessCard />
+        {/* <BussinessCard /> */}
       </div>
     </>
   );

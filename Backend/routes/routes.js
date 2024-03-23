@@ -27,6 +27,7 @@ router.post('/api/location/delete', authenticate, locationController.delete);
 
 //jobs routes
 router.get('/api/jobs/get', authenticate, jobsController.get);
+router.get('/api/jobs/get_by_category', authenticate, jobsController.get_by_category);
 router.get('/api/jobs/get/:id', authenticate, jobsController.get_details);
 router.post('/api/jobs/create', authenticate, jobsController.create);
 router.post('/api/jobs/update', authenticate, jobsController.update);

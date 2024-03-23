@@ -65,7 +65,6 @@ export default {
     mounted() {
         // Get id from route params
         this.fetchCategoryData();
-        // console.log($("._id").val());
     },
     methods: {
         async submit() {

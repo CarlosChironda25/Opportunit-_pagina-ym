@@ -1,7 +1,9 @@
 <script setup>
 import SidebarComponent from '../components/Sidebar.vue';
 import HeaderComponent from '../components/Header.vue';
-
+import { useRoute } from 'vue-router';
+import router from '@/router';
+const route = useRoute();
 </script>
 <template>
     <!--  Body Wrapper -->
@@ -20,11 +22,12 @@ import HeaderComponent from '../components/Header.vue';
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <h5 class="card-title fw-semibold mb-4">Add Job</h5>
+                            <h5 class="card-title fw-semibold mb-4">Edit Job</h5>
                             <router-link class="btn btn-primary" to="/jobs">Show</router-link>
                         </div>
 
                         <form @submit.prevent="submit">
+                            <input type="hidden" name="id" class="_id" :model="id" :value="route.params.id">
 
                             <div class="row">
                                 <div class="col-lg-4 mb-4">
@@ -59,7 +62,7 @@ import HeaderComponent from '../components/Header.vue';
                                 <div class="col-lg-4 mb-4">
                                     <label class="mb-2">Status</label>
                                     <select name="is_active" v-model="is_active" id="" class="form-select">
-                                        <option value="1" class="2" selected>Active</option>
+                                        <option value="1" class="2">Active</option>
                                         <option value="0" class="2">Inactive</option>
                                     </select>
                                 </div>
@@ -114,9 +117,10 @@ import HeaderComponent from '../components/Header.vue';
 import Ckeditor from '../components/Ckeditor.vue';
 
 import axios from 'axios';
-const url = import.meta.env.VITE_APP_ADMIN_API_URL + 'api/jobs/create';
+const url = import.meta.env.VITE_APP_ADMIN_API_URL + 'api/jobs/update';
 const get_category = import.meta.env.VITE_APP_ADMIN_API_URL + 'api/category/get';
 const get_location = import.meta.env.VITE_APP_ADMIN_API_URL + 'api/location/get';
+const get_job = import.meta.env.VITE_APP_ADMIN_API_URL + 'api/jobs/get/';
 export default {
     components: {
         Ckeditor
@@ -135,6 +139,7 @@ export default {
             error: '',
             category_data: [],
             location_data: [],
+            id: '',
 
         };
 
@@ -168,10 +173,9 @@ export default {
                 // Handle error
                 console.error("Error fetching data:", error);
             });
+        this.fetchCategoryData();
+
     },
-
-
-
     methods: {
 
         async submit() {
@@ -179,6 +183,7 @@ export default {
             const response = await axios.post(url,
                 {
                     title: this.title,
+                    id: this.id,
                     publication: this.publication,
                     category_id: this.category_id,
                     location_id: this.location_id,
@@ -210,7 +215,30 @@ export default {
 
 
         },
+        fetchCategoryData() {
+            // Make API request to fetch data based on id
+            axios.get(get_job + $("._id").val(), {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'lFM0vdsTK2HBwMTEVxjUF4LKCd2c2qS58MAy3hw5bmATF8hOuXPVYLHATiUA9ISV'
+                }
+            }).then(response => {
+                this.title = response.data.data.title;
+                this.publication =  response.data.data.publication;
+                this.category_id =  response.data.data.category_id;
+                this.location_id =  response.data.data.location_id;
+                this.is_active =  response.data.data.is_active;
+                this.is_featured =  response.data.data.is_featured;
+                this.jobDescription =  response.data.data.job_description;
+                this.requirement =  response.data.data.requirement;
+                this.company_profile = response.data.data.company_profile;
+                this.id = response.data.data.id;
 
+            })
+                .catch(error => {
+                    console.error('Error fetching category data:', error);
+                });
+        },
 
     }
 };

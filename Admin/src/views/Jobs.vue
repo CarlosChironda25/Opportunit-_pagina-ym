@@ -53,10 +53,10 @@ import HeaderComponent from '../components/Header.vue';
 
                                         </td>
                                         <td class="px-6 py-4 whitespace-no-wrap">
-                                            <router-link class="btn btn-md btn-warning"
+                                            <router-link class="btn btn-md btn-warning mb-2"
                                                 :to="'/jobs/edit/' + item.id">Edit</router-link>
                                             &nbsp;
-                                            <button class="btn btn-md btn-danger" @click="delete_data(item.id)"
+                                            <button class="btn btn-md btn-danger mb-2" @click="delete_data(item.id)"
                                                 data-id="{{ item.id }}">Delete</button>
                                         </td>
                                     </tr>

@@ -24,6 +24,35 @@ exports.get = async (req, res) => {
     }
 };
 
+
+exports.get_by_category = async (req, res) => {
+    try {
+        const get_data = await db.select('jobs.id', 'jobs.title', 'jobs.is_published', 'jobs.publication', 'jobs.location_id', 'jobs.category_id', 'location.name as location_name', 'category.name as category_name', 'jobs.is_active as status')
+            .table('jobs')
+            .leftJoin('category', 'jobs.category_id', 'category.id')
+            .leftJoin('location', 'jobs.location_id', 'location.id')
+            .where('jobs.is_deleted', '0');
+
+        if (get_data && get_data != '') {
+            var data = {};
+
+            for (let index = 0; index < get_data.length; index++) {
+                if (!data[get_data[index]['category_id']]) {
+                    data[get_data[index]['category_id']] = [];
+                }
+                data[get_data[index]['category_id']].push(get_data[index]);
+            }
+        }
+
+        res.json({ status: 'success', msg: 'success', total_count: get_data.length, data_Key: data })
+
+    } catch (error) {
+        console.error(error);
+        // Handle database operation error
+        res.status(500).json({ error: 'Database Error', errorNote: error });
+    }
+};
+
 exports.get_details = async (req, res) => {
     const id = req.params?.id
 
@@ -55,6 +84,8 @@ exports.create = async (req, res) => {
     const publication = req.body?.publication;
     const location_id = req.body?.location_id;
     const category_id = req.body?.category_id;
+    const is_active = req.body?.is_active;
+    const is_featured = req.body?.is_featured;
 
 
     if (!title || title.trim() === '') {
@@ -67,7 +98,7 @@ exports.create = async (req, res) => {
         return res.json(output);
     }
 
-    if (!location_id || location_id.trim() === '') {
+    if (!location_id || location_id == '') {
         const output = { status: "failed", msg: 'Please Enter jobs Location' };
         return res.json(output);
     }
@@ -88,7 +119,8 @@ exports.create = async (req, res) => {
             publication: publication,
             location_id: location_id,
             category_id: category_id,
-            is_active: 1,
+            is_active: is_active,
+            is_featured: is_featured,
             created_at: timestamp
         });
 
@@ -118,6 +150,8 @@ exports.update = async (req, res) => {
     const publication = req.body?.publication;
     const location_id = req.body?.location_id;
     const category_id = req.body?.category_id;
+    const is_active = req.body?.is_active;
+    const is_featured = req.body?.is_featured;
 
     if (!id || id === '') {
         const output = { status: "failed", msg: 'Please Enter jobs id' };
@@ -134,7 +168,7 @@ exports.update = async (req, res) => {
         return res.json(output);
     }
 
-    if (!location_id || location_id.trim() === '') {
+    if (!location_id || location_id =='') {
         const output = { status: "failed", msg: 'Please Enter jobs Location' };
         return res.json(output);
     }
@@ -159,7 +193,8 @@ exports.update = async (req, res) => {
                 publication: publication ?? get_data.publication,
                 location_id: location_id ?? get_data.location_id,
                 category_id: category_id,
-                is_active: 1,
+                is_active: is_active,
+                is_featured: is_featured,
                 updated_at: timestamp
             });
 

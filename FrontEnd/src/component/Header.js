@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from "../img/logo.png";
 import { Link, useLocation } from "react-router-dom";
 import SidebarMenu from "./SidebarMenu";
+import { CiSearch } from "react-icons/ci";
 
 function Header() {
   const [side, setSide] = useState(false);
@@ -25,19 +26,33 @@ function Header() {
               </li>
 
               <li>
-                <Link to="/">Eventi</Link>
+                <Link to="/">Aperte</Link>
+              </li>
+              <li>
+                <Link to="/">Chi Siamo</Link>
               </li>
               <li>
                 <Link to="/">Sfide</Link>
               </li>
               <li>
-                <Link to="/">Insight</Link>
+                <Link to="/">Contenuti</Link>
               </li>
               <li>
-                <Link to="/">Premi</Link>
+                <Link to="/">Support</Link>
               </li>
               <li>
-                <Link to="/">Categorie</Link>
+                <Link to="/">Accede</Link>
+              </li>
+              <li className="ml-0" style={{ paddingLeft: "20px" }}>
+                <button type="button" className="border-0 bg-transparent">
+                  <CiSearch
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "25px",
+                      fontWeight: "800",
+                    }}
+                  />
+                </button>
               </li>
             </ul>
           </nav>
