@@ -10,7 +10,7 @@ function Job() {
   const show = async (jobId) => {
     try {
       const result = await axios.get(
-        `http://localhost:5000/api/jobs/get/${jobId}`
+        `http://localhost:5001/api/jobs/get/${jobId}`
       );
       setData(result.data);
     } catch (error) {

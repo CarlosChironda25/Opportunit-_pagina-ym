@@ -70,7 +70,53 @@ import HeaderComponent from '../components/Header.vue';
                                         <option value="0" class="2">No</option>
                                     </select>
                                 </div>
+                                <div class="col-lg-4 mb-4">
+                                    <label class="mb-2">Job Type</label>
+                                    <input type="text" v-model="job_type" class="form-control">
+                                </div>
 
+                                <div class="col-lg-4 mb-4">
+                                    <label class="mb-2">Division</label>
+                                    <input type="text" v-model="division" class="form-control">
+                                </div>
+
+                                <div class="col-lg-4 mb-4">
+                                    <label class="mb-2">Number of Profile</label>
+                                    <input type="text" v-model="number_of_profile" class="form-control">
+                                </div>
+
+                                <div class="col-lg-4 mb-4">
+                                    <label class="mb-2">Workplace</label>
+                                    <input type="text" v-model="workplace" class="form-control">
+                                </div>
+
+                                <div class="col-lg-4 mb-4">
+                                    <label class="mb-2">Contract Type</label>
+                                    <input type="text" v-model="contract_type" class="form-control">
+                                </div>
+
+                                <div class="col-lg-4 mb-4">
+                                    <label class="mb-2">Salary</label>
+                                    <input type="text" v-model="salary" class="form-control">
+                                </div>
+
+                                <div class="col-lg-4 mb-4">
+                                    <label class="mb-2">Type of Work</label>
+                                    <input type="text" v-model="type_of_work" class="form-control">
+                                </div>
+
+                                <div class="col-lg-4 mb-4">
+                                    <label class="mb-2">Application Deadline</label>
+                                    <input type="date" v-model="application_deadline" class="form-control">
+                                </div>
+
+                                <div class="col-lg-12 mb-4">
+                                    <label class="mb-2">Useful Information</label>
+                                    <!-- <input type="text" v-model="useful_information" class="form-control"> -->
+                                    <textarea name="job_description" v-model="useful_information" class="form-control"
+                                        id="job_description" rows="12"></textarea>
+
+                                </div>
 
                                 <div class="col-lg-12 mb-4">
                                     <label class="mb-2">Job Description</label>
@@ -132,10 +178,19 @@ export default {
             jobDescription: '',
             requirement: '',
             company_profile: '',
+            job_type: '',
+            division: '',
+            number_of_profile: '',
+            workplace: '',
+            contract_type: '',
+            salary: '',
+            type_of_work: '',
+            application_deadline: '',
+            useful_information: '',
+
             error: '',
             category_data: [],
             location_data: [],
-
         };
 
     },
@@ -187,6 +242,15 @@ export default {
                     job_description: this.jobDescription,
                     requirement: this.requirement,
                     company_profile: this.company_profile,
+                    job_type: this.job_type,
+                    division: this.division,
+                    number_of_profile: this.number_of_profile,
+                    workplace: this.workplace,
+                    contract_type: this.contract_type,
+                    salary: this.salary,
+                    type_of_work: this.type_of_work,
+                    application_deadline: this.application_deadline,
+                    useful_information: this.useful_information,
                 },
                 {
                     headers: {

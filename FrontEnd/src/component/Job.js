@@ -13,7 +13,7 @@ function Job() {
   const show = async () => {
     try {
       const result = await axios.get(
-        `http://localhost:5000/api/jobs/get/${jobId}`,
+        `http://localhost:5001/api/jobs/get/${jobId}`,
         {
           headers: {
             Authorization:
@@ -89,23 +89,67 @@ function Job() {
           </div>
           <div className="row">
             <div className="col-lg-8 col-md-7 col-sm-12 col-xl-8 col-xxl-8">
-              <div className="job-details">
-                <h4 className="font18 poppins mb-2">Job Description</h4>
-                <p className="font14 poppins">{data.job_description}</p>
+              <div className="job-details mb-5">
+                <h4 className="font18 poppins mb-2">Descrizione del lavoro</h4>
+                <p className="font14 poppins" dangerouslySetInnerHTML={{ __html: data.job_description }}></p>
               </div>
-              <div className="job-details">
-                <h4 className="font18 poppins mb-2">Requirements</h4>
-                <ul>
-                  <li>
-                    <p className="font14 poppins">{data.requirement}</p>
-                  </li>
-                </ul>
+              <div className="job-details mb-5">
+                <h4 className="font18 poppins mb-2">Competenze richieste</h4>
+                <p className="font14 poppins" dangerouslySetInnerHTML={{ __html: data.requirement }}></p>
               </div>
 
-              <div className="job-details">
+              <div className="job-details mb-5">
                 <h4 className="font18 poppins mb-2">Company Profile</h4>
-                <p className="font14 poppins">{data.company_profile}</p>
+                <p className="font14 poppins" dangerouslySetInnerHTML={{ __html: data.company_profile }}></p>
               </div>
+
+              <div className="job-details mb-5">
+                <h4 className="font18 poppins mb-2">Tipo di lavoro</h4>
+                <p className="font14 poppins">{data.job_type}</p>
+              </div>
+
+              <div className="job-details mb-5">
+                <h4 className="font18 poppins mb-2">Divisione</h4>
+                <p className="font14 poppins">{data.division}</p>
+              </div>
+
+
+              <div className="job-details mb-5">
+                <h4 className="font18 poppins mb-2">Numero di profilo ricercati</h4>
+                <p className="font14 poppins">{data.number_of_profile}</p>
+              </div>
+
+
+              <div className="job-details mb-5">
+                <h4 className="font18 poppins mb-2">Sede di lavoro</h4>
+                <p className="font14 poppins">{data.workplace}</p>
+              </div>
+
+              <div className="job-details mb-5">
+                <h4 className="font18 poppins mb-2">Tipologia di contratto</h4>
+                <p className="font14 poppins">{data.contract_type}</p>
+              </div>
+
+              <div className="job-details mb-5">
+                <h4 className="font18 poppins mb-2">Retribuzione</h4>
+                <p className="font14 poppins">{data.salary}</p>
+              </div>
+
+              <div className="job-details mb-5">
+                <h4 className="font18 poppins mb-2">Tipologia di lavoro</h4>
+                <p className="font14 poppins">{data.type_of_work}</p>
+              </div>
+
+              <div className="job-details mb-5">
+                <h4 className="font18 poppins mb-2">Scadenza Applicazione</h4>
+                <p className="font14 poppins">{data.application_deadline}</p>
+              </div>
+              <div className="job-details mb-5">
+                <h4 className="font18 poppins mb-2">Informazione utile</h4>
+                <p className="font14 poppins" dangerouslySetInnerHTML={{ __html: data.useful_information }}></p>
+              </div>
+
+
             </div>
             {/* <div className="col-lg-4 col-md-5 col-sm-12 col-xl-4 col-xxl-8">
               <div className="job-card">

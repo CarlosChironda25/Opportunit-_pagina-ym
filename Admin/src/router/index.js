@@ -135,19 +135,12 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  // const counter = useCounterStore()
-  // const isAuthenticated = counter?.is_logged;
-  // console.log(isAuthenticated);
   const isAuthenticated = (localStorage.getItem('token')) ?? false;
   const isAuthRequired = to.matched.some(record => record.meta.requiresAuth);
-  // console.log(isAuthenticated, 'token');
-  // console.log(isAuthRequired, 'meta');
 
   if ((isAuthenticated === false && isAuthRequired)) {
-    // console.log('Redirecting to login');
     next('/login');
   } else {
-    // console.log('Continuing to requested route');
     next();
   }
 });

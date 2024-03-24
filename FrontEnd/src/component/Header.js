@@ -41,7 +41,7 @@ function Header() {
                 <Link to="/">Support</Link>
               </li>
               <li>
-                <Link to="/">Accede</Link>
+                <Link target="_blank"  to="http://localhost:5173/">Accede</Link>
               </li>
               <li className="ml-0" style={{ paddingLeft: "20px" }}>
                 <button type="button" className="border-0 bg-transparent">

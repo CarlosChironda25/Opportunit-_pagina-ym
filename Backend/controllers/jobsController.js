@@ -8,11 +8,11 @@ var timestamp = moment().format('YYYY-MM-DD HH:mm:ss');
 exports.get = async (req, res) => {
     try {
         const get_data = await db.select('jobs.id', 'jobs.title', 'jobs.job_description', 'jobs.requirement',
-            'jobs.company_profile', 'jobs.is_published', 'jobs.publication', 'jobs.location_id', 'jobs.category_id', 'location.name as location_name', 'category.name as category_name', 'jobs.is_active as status')
+            'jobs.company_profile', 'jobs.is_published', 'jobs.publication', 'jobs.location_id', 'jobs.category_id', 'location.name as location_name', 'category.name as category_name', 'jobs.is_active as status', 'jobs.job_type', 'jobs.division', 'jobs.number_of_profile', 'jobs.workplace', 'jobs.contract_type', 'jobs.salary', 'jobs.type_of_work', 'jobs.application_deadline', 'jobs.useful_information', 'jobs.is_featured')
             .table('jobs')
             .leftJoin('category', 'jobs.category_id', 'category.id')
             .leftJoin('location', 'jobs.location_id', 'location.id')
-            .where('jobs.is_deleted', '0')
+            .where('jobs.is_deleted', '0').orderBy('id', 'desc')
 
 
         res.json({ status: 'success', msg: 'success', total_count: get_data.length, data: get_data })
@@ -26,12 +26,31 @@ exports.get = async (req, res) => {
 
 
 exports.get_by_category = async (req, res) => {
+    const search_term = req.body?.search_term;
+    const category_id = req.body?.category_id;
+    const location_id = req.body?.location_id;
+
     try {
-        const get_data = await db.select('jobs.id', 'jobs.title', 'jobs.is_published', 'jobs.publication', 'jobs.location_id', 'jobs.category_id', 'location.name as location_name', 'category.name as category_name', 'jobs.is_active as status')
+        const query = db.select('jobs.id', 'jobs.title', 'jobs.is_published', 'jobs.publication', 'jobs.location_id', 'jobs.category_id', 'location.name as location_name', 'category.name as category_name', 'jobs.is_active as status', 'jobs.job_type', 'jobs.division', 'jobs.number_of_profile', 'jobs.workplace', 'jobs.contract_type', 'jobs.salary', 'jobs.type_of_work', 'jobs.application_deadline', 'jobs.useful_information', 'jobs.is_featured')
             .table('jobs')
             .leftJoin('category', 'jobs.category_id', 'category.id')
             .leftJoin('location', 'jobs.location_id', 'location.id')
             .where('jobs.is_deleted', '0');
+
+
+        if (location_id && location_id != '') {
+            query.whereIn('location_id', location_id);
+        }
+
+        if (category_id && category_id != '') {
+            query.whereIn('category_id', category_id);
+        }
+
+        if (search_term && search_term !== '') {
+            query.whereILike('title', '%' + search_term + '%')
+        }
+
+        get_data = await query;
 
         if (get_data && get_data != '') {
             var data = {};
@@ -58,7 +77,7 @@ exports.get_details = async (req, res) => {
 
     try {
         const get_data = await db.select('jobs.id', 'jobs.title', 'jobs.job_description', 'jobs.requirement',
-            'jobs.company_profile', 'jobs.is_published', 'jobs.publication', 'jobs.location_id', 'jobs.category_id', 'location.name as location_name', 'category.name as category_name', 'jobs.is_active as status')
+            'jobs.company_profile', 'jobs.is_published', 'jobs.publication', 'jobs.location_id', 'jobs.category_id', 'location.name as location_name', 'category.name as category_name', 'jobs.is_active as status', 'jobs.job_type', 'jobs.division', 'jobs.number_of_profile', 'jobs.workplace', 'jobs.contract_type', 'jobs.salary', 'jobs.type_of_work', 'jobs.application_deadline', 'jobs.useful_information', 'jobs.is_featured')
             .table('jobs')
             .leftJoin('category', 'jobs.category_id', 'category.id')
             .leftJoin('location', 'jobs.location_id', 'location.id')
@@ -86,7 +105,15 @@ exports.create = async (req, res) => {
     const category_id = req.body?.category_id;
     const is_active = req.body?.is_active;
     const is_featured = req.body?.is_featured;
-
+    const job_type = req.body?.job_type;
+    const division = req.body?.division;
+    const number_of_profile = req.body?.number_of_profile;
+    const workplace = req.body?.workplace;
+    const contract_type = req.body?.contract_type;
+    const salary = req.body?.salary;
+    const type_of_work = req.body?.type_of_work;
+    const application_deadline = req.body?.application_deadline;
+    const useful_information = req.body?.useful_information;
 
     if (!title || title.trim() === '') {
         const output = { status: "failed", msg: 'Please Enter jobs Title' };
@@ -121,7 +148,17 @@ exports.create = async (req, res) => {
             category_id: category_id,
             is_active: is_active,
             is_featured: is_featured,
-            created_at: timestamp
+            created_at: timestamp,
+            job_type: job_type,
+            division: division,
+            number_of_profile: number_of_profile,
+            workplace: workplace,
+            contract_type: contract_type,
+            salary: salary,
+            type_of_work: type_of_work,
+            application_deadline: application_deadline,
+            useful_information: useful_information,
+
         });
 
         if (status) {
@@ -152,6 +189,16 @@ exports.update = async (req, res) => {
     const category_id = req.body?.category_id;
     const is_active = req.body?.is_active;
     const is_featured = req.body?.is_featured;
+    const job_type = req.body?.job_type;
+    const division = req.body?.division;
+    const number_of_profile = req.body?.number_of_profile;
+    const workplace = req.body?.workplace;
+    const contract_type = req.body?.contract_type;
+    const salary = req.body?.salary;
+    const type_of_work = req.body?.type_of_work;
+    const application_deadline = req.body?.application_deadline;
+    const useful_information = req.body?.useful_information;
+
 
     if (!id || id === '') {
         const output = { status: "failed", msg: 'Please Enter jobs id' };
@@ -168,7 +215,7 @@ exports.update = async (req, res) => {
         return res.json(output);
     }
 
-    if (!location_id || location_id =='') {
+    if (!location_id || location_id == '') {
         const output = { status: "failed", msg: 'Please Enter jobs Location' };
         return res.json(output);
     }
@@ -195,7 +242,17 @@ exports.update = async (req, res) => {
                 category_id: category_id,
                 is_active: is_active,
                 is_featured: is_featured,
-                updated_at: timestamp
+                updated_at: timestamp,
+                job_type: job_type ?? get_data.job_type,
+                division: division ?? get_data.division,
+                number_of_profile: number_of_profile ?? get_data.number_of_profile,
+                workplace: workplace ?? get_data.workplace,
+                contract_type: contract_type ?? get_data.contract_type,
+                salary: salary ?? get_data.salary,
+                type_of_work: type_of_work ?? get_data.type_of_work,
+                application_deadline: application_deadline ?? get_data.application_deadline,
+                useful_information: useful_information ?? get_data.useful_information,
+
             });
 
             if (status) {
