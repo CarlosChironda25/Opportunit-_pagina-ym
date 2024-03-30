@@ -5,14 +5,56 @@ import Title from "./Title";
 import axios from "axios";
 import banner from "../img/banner.png";
 import Select from "react-select";
+import { MdOutlineFilterListOff } from "react-icons/md";
+
 
 import React, { useEffect, useState } from "react";
 function BussinessCard() {
 
-  // ======================================================= banner page  merge =======================================================
+  //Owl Carousel Settings Responsive
+  const options = {
+    loop: false,
+    // rewind: true,
+    dots: false,
+    items: 1,
+    margin: 30,
+    responsiveClass: true,
+    autoplay: true,
+    smartSpeed: 3000,
+    responsiveClass: true,
+    autoplayTimeout: 4000,
+    autoplayHoverPause: true,
+    navigation: true,
+    startPosition: 1,
+    center: false,
+    responsive: {
+      0: {
+        items: 1,
+        nav: true,
+      },
+      600: {
+        items: 2,
+        nav: true,
+      },
+      1000: {
+        items: 3,
+        nav: true,
+        // loop: false,
+      },
+    },
+  };
+
   const [data3, setData3] = useState([]);
   const [data2, setData2] = useState([]);
   const [reset_btn, set_reset_btn] = useState(false);
+
+  const [selectedOptions1, setSelectedOptions1] = useState([]);
+  const [selectedOptions2, setSelectedOptions2] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
+
+
+  const [data, setData] = useState([]);
+  const filters = {};
 
   const show2 = async () => {
     const result = await axios.get("http://localhost:5001/api/category/get", {
@@ -48,86 +90,39 @@ function BussinessCard() {
       setData2(option2Data);
     }
   };
-  // const newData = data.map((ele) => ({ label: ele.name, value: ele.name }));
-  useEffect(() => {
-    show2();
-  }, []);
+  // useEffect(() => {
+  //   show2();
+  // }, []);
 
-  // ==================== Filter functionality code block starts here ==================== //
-  const [selectedOptions1, setSelectedOptions1] = useState([]);
-  const [selectedOptions2, setSelectedOptions2] = useState([]);
-  const [searchInput, setSearchInput] = useState('');
 
   const handleSelectChange1 = (selectedOptions) => {
     setSelectedOptions1(selectedOptions.map(option => option.value))
-    show();
+    // show();
     set_reset_btn(true);
 
   };
 
   const handleSelectChange2 = (selectedOptions) => {
     setSelectedOptions2(selectedOptions.map(option => option.value));
-    show();
+    // show();
     set_reset_btn(true);
   };
 
   const handleInputChange = (event) => {
     setSearchInput(event.target.value);
-    show();
+    // show();
 
     set_reset_btn(true);
   };
 
   const hotreload = () => {
-    // setSelectedOptions1(null);
-    // setSelectedOptions2(null);
+    // setSelectedOptions1([]);
+    // setSelectedOptions2([]);
     // setSearchInput('');
-    // show();
     // set_reset_btn(false);
     window.location.reload();
-
-
   }
 
-
-  // ==================== Filter functionality code block ends here ==================== //
-
-  //======================================================= banner page  merge =======================================================
-
-  //Owl Carousel Settings Responsive
-  const options = {
-    loop: false,
-    // rewind: true,
-    dots: false,
-    items: 1,
-    margin: 30,
-    responsiveClass: true,
-    autoplay: true,
-    smartSpeed: 3000,
-    responsiveClass: true,
-    autoplayTimeout: 4000,
-    autoplayHoverPause: true,
-    navigation: true,
-    startPosition: 1,
-    center: false,
-    responsive: {
-      0: {
-        items: 1,
-        nav: true,
-      },
-      600: {
-        items: 2,
-        nav: true,
-      },
-      1000: {
-        items: 3,
-        nav: true,
-        // loop: false,
-      },
-    },
-  };
-  const [data, setData] = useState([]);
-  const filters = {};
 
   if (searchInput != '') {
     filters['search_term'] = searchInput;
@@ -139,8 +134,7 @@ function BussinessCard() {
   if (selectedOptions2.length > 0) {
     filters['location_id'] = selectedOptions2;
   }
-  console.log("selectedOptions1", selectedOptions1);
-  console.log("selectedOptions2", selectedOptions2);
+
 
   const show = async () => {
     const result = await axios.post("http://localhost:5001/api/jobs/get_by_category", filters, {
@@ -152,9 +146,13 @@ function BussinessCard() {
 
     setData(result.data.data_Key);
   };
+
+
   useEffect(() => {
     show();
-  }, []);
+    show2();
+  }, [selectedOptions1, selectedOptions2, searchInput]);
+
 
   return (
     <div div className="crd">
@@ -201,7 +199,15 @@ function BussinessCard() {
             {reset_btn ? (
               <div className="col-lg-3 col-md-3 col-xl-3 col-xxl-3">
                 <div className="select">
-                  <button className="btn btn-reset" onClick={hotreload}>Reset</button>
+                  <button className="btn btn-reset" onClick={hotreload}>
+                    <MdOutlineFilterListOff style={{
+                      fontWeight: "bold",
+                      fontSize: "20px",
+                      fontWeight: "400",
+                      marginTop:"-4px"
+                    }} />
+                   &nbsp; Reset Filter
+                  </button>
                 </div>
               </div>
             ) : null}
