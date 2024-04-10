@@ -1,5 +1,5 @@
-import CardAll from "./CardAll";
-import BussinessCard from "./BussinessCard";
+// import CardAll from "./CardAll";
+// import BussinessCard from "./BussinessCard";
 import logo from "../img/logo_icon.png";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
@@ -29,6 +29,8 @@ function Job() {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     show(jobId);
   }, [jobId]);
   return (
@@ -46,7 +48,7 @@ function Job() {
               </Link>
               <div className="row align-items-lg-center mt-3 ">
                 <div className="col-lg-8 col-md-6 col-xl-8 col-sm-12">
-                  <div className="banner-name poppins font22 mb-2">
+                  <div className="banner-name poppins font40 mb-2">
                     {data.title}
                   </div>
                   <p>
@@ -102,54 +104,69 @@ function Job() {
                 <h4 className="font18 poppins mb-2">Company Profile</h4>
                 <p className="font14 poppins" dangerouslySetInnerHTML={{ __html: data.company_profile }}></p>
               </div>
+              {data.job_type !== '' ? (
+                <div className="job-details mb-5">
+                  <h4 className="font18 poppins mb-2">Tipo di lavoro</h4>
+                  <p className="font14 poppins">{data.job_type}</p>
+                </div>
+              ) : null}
 
-              <div className="job-details mb-5">
-                <h4 className="font18 poppins mb-2">Tipo di lavoro</h4>
-                <p className="font14 poppins">{data.job_type}</p>
-              </div>
+              {data.division !== '' ? (
+                <div className="job-details mb-5">
+                  <h4 className="font18 poppins mb-2">Divisione</h4>
+                  <p className="font14 poppins">{data.division}</p>
+                </div>
+              ) : null}
 
-              <div className="job-details mb-5">
-                <h4 className="font18 poppins mb-2">Divisione</h4>
-                <p className="font14 poppins">{data.division}</p>
-              </div>
+              {data.number_of_profile !== '' ? (
+                <div className="job-details mb-5">
+                  <h4 className="font18 poppins mb-2">Numero di profilo ricercati</h4>
+                  <p className="font14 poppins">{data.number_of_profile}</p>
+                </div>
+              ) : null}
 
+              {data.workplace !== '' ? (
+                <div className="job-details mb-5">
+                  <h4 className="font18 poppins mb-2">Sede di lavoro</h4>
+                  <p className="font14 poppins">{data.workplace}</p>
+                </div>
+              ) : null}
 
-              <div className="job-details mb-5">
-                <h4 className="font18 poppins mb-2">Numero di profilo ricercati</h4>
-                <p className="font14 poppins">{data.number_of_profile}</p>
-              </div>
+              {data.contract_type !== '' ? (
+                <div className="job-details mb-5">
+                  <h4 className="font18 poppins mb-2">Tipologia di contratto</h4>
+                  <p className="font14 poppins">{data.contract_type}</p>
+                </div>
+              ) : null}
 
+              {data.salary !== '' ? (
+                <div className="job-details mb-5">
+                  <h4 className="font18 poppins mb-2">Retribuzione</h4>
+                  <p className="font14 poppins">{data.salary}</p>
+                </div>
+              ) : null}
 
-              <div className="job-details mb-5">
-                <h4 className="font18 poppins mb-2">Sede di lavoro</h4>
-                <p className="font14 poppins">{data.workplace}</p>
-              </div>
+              {data.type_of_work !== '' ? (
+                <div className="job-details mb-5">
+                  <h4 className="font18 poppins mb-2">Tipologia di lavoro</h4>
+                  <p className="font14 poppins">{data.type_of_work}</p>
+                </div>
+              ) : null}
 
-              <div className="job-details mb-5">
-                <h4 className="font18 poppins mb-2">Tipologia di contratto</h4>
-                <p className="font14 poppins">{data.contract_type}</p>
-              </div>
+              {data.application_deadline !== '' ? (
+                <div className="job-details mb-5">
+                  <h4 className="font18 poppins mb-2">Scadenza Applicazione</h4>
+                  <p className="font14 poppins">{data.application_deadline}</p>
+                </div>
+              ) : null}
 
-              <div className="job-details mb-5">
-                <h4 className="font18 poppins mb-2">Retribuzione</h4>
-                <p className="font14 poppins">{data.salary}</p>
-              </div>
+              {data.useful_information !== '' ? (
+                <div className="job-details mb-5">
+                  <h4 className="font18 poppins mb-2">Informazioni  Utili</h4>
+                  <p className="font14 poppins" dangerouslySetInnerHTML={{ __html: data.useful_information }}></p>
+                </div>
 
-              <div className="job-details mb-5">
-                <h4 className="font18 poppins mb-2">Tipologia di lavoro</h4>
-                <p className="font14 poppins">{data.type_of_work}</p>
-              </div>
-
-              <div className="job-details mb-5">
-                <h4 className="font18 poppins mb-2">Scadenza Applicazione</h4>
-                <p className="font14 poppins">{data.application_deadline}</p>
-              </div>
-              <div className="job-details mb-5">
-                <h4 className="font18 poppins mb-2">Informazione utile</h4>
-                <p className="font14 poppins" dangerouslySetInnerHTML={{ __html: data.useful_information }}></p>
-              </div>
-
-
+              ) : null}
             </div>
             {/* <div className="col-lg-4 col-md-5 col-sm-12 col-xl-4 col-xxl-8">
               <div className="job-card">

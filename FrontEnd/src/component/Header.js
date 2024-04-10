@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "../img/logo.png";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SidebarMenu from "./SidebarMenu";
 import { CiSearch } from "react-icons/ci";
 
@@ -19,7 +19,7 @@ function Header() {
               setSide(!side);
             }}
           ></i>
-          <nav id="navbar" class="navbar">
+          <nav id="navbar" class="navbar d-none">
             <ul>
               <li>
                 <Link to="/">Posizioni Aperte</Link>

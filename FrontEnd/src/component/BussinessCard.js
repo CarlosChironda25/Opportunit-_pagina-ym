@@ -163,7 +163,7 @@ function BussinessCard() {
               <div className="banner-details">
                 <h1 className="font50 poppins">Posizioni aperte</h1>
                 <p className="font25 poppins">
-                  Scopri le opportunità di lavoro e candidati
+                  Scopri tutte le opportunità di levorative disponibili per tel
                 </p>
               </div>
             </div>
@@ -204,9 +204,9 @@ function BussinessCard() {
                       fontWeight: "bold",
                       fontSize: "20px",
                       fontWeight: "400",
-                      marginTop:"-4px"
+                      marginTop: "-4px"
                     }} />
-                   &nbsp; Reset Filter
+                    &nbsp; Reset Filter
                   </button>
                 </div>
               </div>

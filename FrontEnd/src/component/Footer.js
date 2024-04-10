@@ -17,17 +17,17 @@ function Footer() {
               <h3 class="font18 poppins mb-2">Seguici sui nostri social</h3>
               <ul>
                 <li>
-                  <a href="#" target="_blank">
+                  <a href="https://www.facebook.com/mygrants.it" target="_blank">
                     <i className="fa fa-facebook fb"></i>
                   </a>
                 </li>
                 <li>
-                  <a href="#" target="_blank">
+                  <a href="https://www.instagram.com/mygrants_/" target="_blank">
                     <i class="fa fa-instagram fb"></i>
                   </a>
                 </li>
                 <li>
-                  <a href="#" target="_blank">
+                  <a href="https://www.linkedin.com/company/mygrants/mycompany/" target="_blank">
                     <i class="fa fa-linkedin-square fb"></i>
                   </a>
                 </li>
@@ -45,7 +45,7 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className="row mb-4">
+        <div className="row mb-4 d-none">
           <div className="col-lg-12">
             <div className="footer-menu">
               <ul>
@@ -96,19 +96,19 @@ function Footer() {
           <div className="row">
             <p className="font14 poppins mb-0">
               <div>
-                <Link to="/contact" className="manu poppins font15 text-reset color__reset">
+                <a href="https://mygrants.it/privacy-policy/" target="_blank" className="manu poppins font15 text-reset color__reset">
                   Privacy
-                </Link>
+                </a>
                 &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;
-                <Link to="/contact" className="manu poppins font15 text-reset color__reset">
+                <a href="https://mygrants.it/termini-e-condizioni/" className="manu poppins font15 text-reset color__reset">
                   Termini e Condizioni
-                </Link>
+                </a>
                 &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;
-                <Link to="/contact" className="manu poppins font15 text-reset color__reset">
-                  Privacy e sicurezza del sito
-                </Link>
+                <a href="https://mygrants.it/cookie-policy/" className="manu poppins font15 text-reset color__reset">
+                  Cookies e Policy
+                </a>
               </div>
-              &copy; Mygrants - C.F. 00409920584 - P.IVA 01333550323
+              &copy; Mygrants - C.F./VAT: 03609451202
               <a href="#" className="text-white text-decoration-none ">
                 - info@mygrants.it
               </a>
