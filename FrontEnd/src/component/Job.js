@@ -91,19 +91,31 @@ function Job() {
           </div>
           <div className="row">
             <div className="col-lg-8 col-md-7 col-sm-12 col-xl-8 col-xxl-8">
+              {data.job_description !== '' ? (
               <div className="job-details mb-5">
                 <h4 className="font18 poppins mb-2">Descrizione del lavoro</h4>
                 <p className="font14 poppins" dangerouslySetInnerHTML={{ __html: data.job_description }}></p>
               </div>
-              <div className="job-details mb-5">
-                <h4 className="font18 poppins mb-2">Competenze richieste</h4>
-                <p className="font14 poppins" dangerouslySetInnerHTML={{ __html: data.requirement }}></p>
-              </div>
+              ) : null}
 
-              <div className="job-details mb-5">
-                <h4 className="font18 poppins mb-2">Company Profile</h4>
-                <p className="font14 poppins" dangerouslySetInnerHTML={{ __html: data.company_profile }}></p>
-              </div>
+
+              {data.requirement !== '' ? (
+
+                <div className="job-details mb-5">
+                  <h4 className="font18 poppins mb-2">Competenze richieste</h4>
+                  <p className="font14 poppins" dangerouslySetInnerHTML={{ __html: data.requirement }}></p>
+                </div>
+              ) : null}
+
+
+              {data.company_profile !== '' ? (
+
+                <div className="job-details mb-5">
+                  <h4 className="font18 poppins mb-2">Company Profile</h4>
+                  <p className="font14 poppins" dangerouslySetInnerHTML={{ __html: data.company_profile }}></p>
+                </div>
+              ) : null}
+
               {data.job_type !== '' ? (
                 <div className="job-details mb-5">
                   <h4 className="font18 poppins mb-2">Tipo di lavoro</h4>

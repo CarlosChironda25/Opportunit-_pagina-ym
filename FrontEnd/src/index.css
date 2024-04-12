@@ -300,7 +300,8 @@ body {
 }
 
 .img-logo {
-  width: 50px !important;
+  /* width: 50px !important; */
+  width: 32px !important;
 }
 
 
@@ -637,7 +638,7 @@ body {
   z-index: 1;
   /* padding-top: 120px; */
   /* padding: 140px 120px 80px; */
-  padding: 45px 120px 140px 120px !important;
+  padding: 45px 120px 140px 42px !important;
 }
 
 .job-banner::before {

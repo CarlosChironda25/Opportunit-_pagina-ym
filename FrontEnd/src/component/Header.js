@@ -9,8 +9,8 @@ function Header() {
   return (
     <>
       <header id="header" class="header d-flex align-items-center">
-        <div class="container-fluid d-flex align-items-center justify-content-between">
-          <Link to="/" class="logo d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
+          <Link to="/" class="logo d-flex align-items-center ">
             <img src={logo} />
           </Link>
           <i

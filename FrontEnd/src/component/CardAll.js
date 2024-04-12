@@ -14,7 +14,7 @@ function CardAll({ title, address, label, id}) {
         </div>
         <div className="flex poppins bottom-sec justify-content-between ">
           <label className="font14">{label}</label>
-          <img src={logo} style={{ height: '40px', width: '250px' }} className="img-logo logo_icon" />
+          <img src={logo} style={{ height: '32px', width: '250px' }} className="img-logo logo_icon" />
         </div>
       </div>
     </Link>

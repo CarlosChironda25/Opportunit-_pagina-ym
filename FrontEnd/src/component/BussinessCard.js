@@ -3,7 +3,7 @@ import OwlCarousel from "react-owl-carousel";
 import CardAll from "./CardAll";
 import Title from "./Title";
 import axios from "axios";
-import banner from "../img/banner.png";
+// import banner from "../img/banner.png";
 import Select from "react-select";
 import { MdOutlineFilterListOff } from "react-icons/md";
 
@@ -163,13 +163,13 @@ function BussinessCard() {
               <div className="banner-details">
                 <h1 className="font50 poppins">Posizioni aperte</h1>
                 <p className="font25 poppins">
-                  Scopri tutte le opportunità di levorative disponibili per tel
+                  Scopri tutte le opportunità di levorative disponibili per te
                 </p>
               </div>
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xl-6 col-xxl-6">
               <div className="banner-img">
-                <img src={banner} className="w-100" />
+                {/* <img src={banner} className="w-100" /> */}
               </div>
             </div>
           </div>
