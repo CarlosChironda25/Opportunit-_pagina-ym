@@ -62,18 +62,21 @@ function Job() {
                 </div>
                 <div className="col-lg-4 col-md-6 col-xl-4 col-sm-12">
                   <div className="d-flex justify-content-between gap-4">
-                    <button
+                    <a href="http://localhost:5173/"
                       type="button"
-                      className="orange-btn font16 poppins pe-3 ps-3 w-100"
+                      className="orange-btn font16 poppins pe-3 ps-3 w-10 text-decoration-none"
                     >
                       CONDIVIDI
-                    </button>
-                    <button
+                    </a>
+                    {/* <button
                       type="button"
                       className="orange-btn font16 poppins pe-3 ps-3 w-100 red"
                     >
                       CANDIDATI
-                    </button>
+                    </button> */}
+
+                    {/* <Link className="orange-btn font16 poppins pe-3 ps-3 w-100 red" target="_blank" to="http://localhost:5173/">CANDIDATI</Link> */}
+
                   </div>
                 </div>
               </div>
@@ -92,10 +95,10 @@ function Job() {
           <div className="row">
             <div className="col-lg-8 col-md-7 col-sm-12 col-xl-8 col-xxl-8">
               {data.job_description !== '' ? (
-              <div className="job-details mb-5">
-                <h4 className="font18 poppins mb-2">Descrizione del lavoro</h4>
-                <p className="font14 poppins" dangerouslySetInnerHTML={{ __html: data.job_description }}></p>
-              </div>
+                <div className="job-details mb-5">
+                  <h4 className="font18 poppins mb-2">Descrizione del lavoro</h4>
+                  <p className="font14 poppins" dangerouslySetInnerHTML={{ __html: data.job_description }}></p>
+                </div>
               ) : null}
 
 
