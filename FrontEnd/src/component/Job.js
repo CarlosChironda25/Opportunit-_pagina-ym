@@ -48,7 +48,7 @@ function Job() {
               </Link>
               <div className="row align-items-lg-center mt-3 ">
                 <div className="col-lg-8 col-md-6 col-xl-8 col-sm-12">
-                  <div className="banner-name poppins font40 mb-2">
+                  <div className="banner-name poppins font50 mb-2">
                     {data.title}
                   </div>
                   <p>
@@ -61,13 +61,21 @@ function Job() {
                   </p>
                 </div>
                 <div className="col-lg-4 col-md-6 col-xl-4 col-sm-12">
-                  <div className="d-flex justify-content-between gap-4">
-                    <a href="http://localhost:5173/"
+                  <div className="d-flex gap-4">
+                    <a href="https://www.facebook.com/mygrants.it"
                       type="button"
                       className="orange-btn font16 poppins pe-3 ps-3 w-10 text-decoration-none"
                     >
                       CONDIVIDI
                     </a>
+                    {data.link !== '' ? (
+                      <a href={data.link}
+                        type="button"
+                        className="orange-btn font16 poppins pe-3 ps-3 red w-10 text-decoration-none"
+                      >
+                        CANDIDATI
+                      </a>
+                    ) : null}
                     {/* <button
                       type="button"
                       className="orange-btn font16 poppins pe-3 ps-3 w-100 red"

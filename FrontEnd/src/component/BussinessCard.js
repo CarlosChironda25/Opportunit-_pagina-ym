@@ -177,7 +177,7 @@ function BussinessCard() {
             <div className="col-lg-12 col-md-12 col-sm-12">
               <div class="form-group has-search mb-4">
                 <span class="fa fa-search form-control-feedback"></span>
-                <input type="text" class="form-control" onKeyUp={handleInputChange} placeholder="Search" />
+                <input type="text" class="form-control" onKeyUp={handleInputChange} placeholder="Cerca" />
               </div>
             </div>
           </div>
