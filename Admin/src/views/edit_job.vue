@@ -113,6 +113,10 @@ const route = useRoute();
                                     <label class="mb-2">Application Deadline</label>
                                     <input type="date" v-model="application_deadline" class="form-control">
                                 </div>
+                                <div class="col-lg-4 mb-4">
+                                    <label class="mb-2">CANDIDATI Link</label>
+                                    <input type="text" v-model="link" class="form-control">
+                                </div>
 
                                 <div class="col-lg-12 mb-4">
                                     <label class="mb-2">Useful Information</label>
@@ -192,6 +196,7 @@ export default {
             type_of_work: '',
             application_deadline: '',
             useful_information: '',
+            link: '',
 
             error: '',
             category_data: [],
@@ -258,6 +263,8 @@ export default {
                     type_of_work: this.type_of_work,
                     application_deadline: this.application_deadline,
                     useful_information: this.useful_information,
+                    link: this.link,
+
 
                 },
                 {
@@ -309,6 +316,7 @@ export default {
                 this.type_of_work = response.data.data.type_of_work;
                 this.application_deadline = response.data.data.application_deadline;
                 this.useful_information = response.data.data.useful_information;
+                this.link = response.data.data.link;
 
             })
                 .catch(error => {

@@ -109,6 +109,10 @@ import HeaderComponent from '../components/Header.vue';
                                     <label class="mb-2">Application Deadline</label>
                                     <input type="date" v-model="application_deadline" class="form-control">
                                 </div>
+                                <div class="col-lg-4 mb-4">
+                                    <label class="mb-2">CANDIDATI Link</label>
+                                    <input type="text" v-model="link" class="form-control">
+                                </div>
 
                                 <div class="col-lg-12 mb-4">
                                     <label class="mb-2">Useful Information</label>
@@ -187,6 +191,7 @@ export default {
             type_of_work: '',
             application_deadline: '',
             useful_information: '',
+            link: '',
 
             error: '',
             category_data: [],
@@ -251,6 +256,7 @@ export default {
                     type_of_work: this.type_of_work,
                     application_deadline: this.application_deadline,
                     useful_information: this.useful_information,
+                    link: this.link,
                 },
                 {
                     headers: {
