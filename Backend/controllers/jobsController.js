@@ -77,7 +77,7 @@ exports.get_details = async (req, res) => {
 
     try {
         const get_data = await db.select('jobs.id', 'jobs.title', 'jobs.job_description', 'jobs.requirement',
-            'jobs.company_profile', 'jobs.is_published', 'jobs.publication', 'jobs.location_id', 'jobs.category_id', 'location.name as location_name', 'category.name as category_name', 'jobs.is_active as status', 'jobs.job_type', 'jobs.division', 'jobs.number_of_profile', 'jobs.workplace', 'jobs.contract_type', 'jobs.salary', 'jobs.type_of_work', 'jobs.application_deadline', 'jobs.useful_information', 'jobs.is_featured')
+            'jobs.company_profile', 'jobs.is_published', 'jobs.publication', 'jobs.location_id', 'jobs.category_id', 'location.name as location_name', 'category.name as category_name', 'jobs.is_active as status', 'jobs.job_type', 'jobs.division', 'jobs.number_of_profile', 'jobs.workplace', 'jobs.contract_type', 'jobs.salary', 'jobs.type_of_work', 'jobs.application_deadline', 'jobs.useful_information', 'jobs.is_featured', 'jobs.link')
             .table('jobs')
             .leftJoin('category', 'jobs.category_id', 'category.id')
             .leftJoin('location', 'jobs.location_id', 'location.id')
@@ -114,6 +114,7 @@ exports.create = async (req, res) => {
     const type_of_work = req.body?.type_of_work;
     const application_deadline = req.body?.application_deadline;
     const useful_information = req.body?.useful_information;
+    const link = req.body?.link;
 
     if (!title || title.trim() === '') {
         const output = { status: "failed", msg: 'Please Enter jobs Title' };
@@ -158,6 +159,7 @@ exports.create = async (req, res) => {
             type_of_work: type_of_work,
             application_deadline: application_deadline,
             useful_information: useful_information,
+            link: link,
 
         });
 
@@ -198,6 +200,7 @@ exports.update = async (req, res) => {
     const type_of_work = req.body?.type_of_work;
     const application_deadline = req.body?.application_deadline;
     const useful_information = req.body?.useful_information;
+    const link = req.body?.link;
 
 
     if (!id || id === '') {
@@ -252,6 +255,7 @@ exports.update = async (req, res) => {
                 type_of_work: type_of_work ?? get_data.type_of_work,
                 application_deadline: application_deadline ?? get_data.application_deadline,
                 useful_information: useful_information ?? get_data.useful_information,
+                link: link,
 
             });
 

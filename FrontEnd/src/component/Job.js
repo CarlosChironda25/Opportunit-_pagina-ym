@@ -4,6 +4,24 @@ import logo from "../img/logo_icon.png";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import ReactDOM from 'react-dom';
+
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
+
+import {
+  EmailIcon,
+  EmailShareButton,
+  FacebookShareButton,
+  FacebookIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+  TwitterIcon,
+  TwitterShareButton
+} from "react-share";
+
 function Job() {
   const [data, setData] = useState([]);
   const location = useLocation();
@@ -33,6 +51,48 @@ function Job() {
 
     show(jobId);
   }, [jobId]);
+
+
+
+  const urlParams = new URLSearchParams(location.search);
+
+  const shareUrl = "http://localhost:3000/job?id=" + urlParams.get("id");
+  const page_title = data.title;
+
+  const SocialShareComponent = () => (
+    <div>
+      <FacebookShareButton url={shareUrl} quote={page_title}>
+        <FacebookIcon size={32} round={true} />
+      </FacebookShareButton>
+      &nbsp;
+      <WhatsappShareButton url={shareUrl} quote={page_title}>
+        <WhatsappIcon size={32} round={true} />
+      </WhatsappShareButton>
+      &nbsp;
+      <TwitterShareButton subject='Social Share' body="Social share contect is here" url={"Has shared from Web"} quote={page_title}>
+        <TwitterIcon size={32} round={true} />
+      </TwitterShareButton>
+
+    </div>
+  );
+
+
+  const social_share = () => {
+    MySwal.fire({
+      title: "<strong>Social Share</strong>",
+      html: '<div id="social-share-container"></div>',
+      showCloseButton: true,
+      focusConfirm: true,
+      confirmButtonText: "Close",
+      didOpen: () => {
+        ReactDOM.render(<SocialShareComponent />, document.getElementById('social-share-container'));
+      }
+    });
+  };
+
+
+
+
   return (
     <>
       <div className="job-banner">
@@ -46,6 +106,7 @@ function Job() {
               >
                 <i class="fa fa-arrow-left me-3" aria-hidden="true"></i>Indietro
               </Link>
+              
               <div className="row align-items-lg-center mt-3 ">
                 <div className="col-lg-8 col-md-6 col-xl-8 col-sm-12">
                   <div className="banner-name poppins font50 mb-2">
@@ -62,7 +123,7 @@ function Job() {
                 </div>
                 <div className="col-lg-4 col-md-6 col-xl-4 col-sm-12">
                   <div className="d-flex gap-4">
-                    <a href="https://www.facebook.com/mygrants.it"
+                    <a href="javascript:void(0)" onClick={social_share}
                       type="button"
                       className="orange-btn font16 poppins pe-3 ps-3 w-10 text-decoration-none"
                     >

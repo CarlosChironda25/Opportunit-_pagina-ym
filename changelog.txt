@@ -3,3 +3,8 @@
 last change
 
 ALTER TABLE `jobs` ADD `link` LONGTEXT NOT NULL DEFAULT '' AFTER `useful_information`;
+-----------------------------------------------------
+
+22-05-2024
+
+social share implement, header logo alignment issue resolved
